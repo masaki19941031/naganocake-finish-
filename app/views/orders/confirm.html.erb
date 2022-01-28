@@ -1,0 +1,124 @@
+<div class='container px-5 px-sm-0 mt-5 mb-5'>
+  <div class='row'>
+    <div class='col-md-7'></div>
+    <div class='col-md-11 offset-md-1'>
+      
+      
+      <div role="content">
+        
+      <div class="widget-body">
+        <div class="row">
+          <form id="wizard-1" novalidate="novalidate">
+            <div id="bootstrap-wizard-1" class="col-sm-12">
+              <div class="form-bootstrapWizard">
+                
+                <div class="clearfix"></div>
+              </div>
+              <div class="tab-content">
+                <div class="tab-pane" id="tab1"> <br>
+                  <h3><strong>買い物かごに入れる</strong> </h3>
+                </div>
+                <div class="tab-pane" id="tab2"> <br>
+                  <h3><strong>注文情報入力</strong> </h3>
+                </div>
+                <div class="tab-pane" id="tab3"> <br>
+                  <h3><strong>注文内容を確認</strong> </h3>
+                </div>
+                <div class="tab-pane" id="tab4"> <br>
+                  <h3><strong>完了</strong> </h3>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+      
+      
+      <div class='col-md-8 offset-md-1 confirm_table'>
+      
+      <h3>注文情報確認</h3>
+    　<table class="table table-bordered", style="width: 70%">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.item.name %></td>
+              <td><%= cart_item.item.price.round.to_s(:delimited) %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= cart_item.item.price * cart_item.amount %> </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+      
+      
+      
+      </div>
+      
+      
+      
+      <div class='col-md-9 offset-md-1 confirm_fee'>
+      <table class="table table-bordered", style="width: 70%">
+        <tbody>
+            <tr valign="middle" class="lh-lg">
+              <td>配送料</td><td><%= @order.shipping_cost %></td>
+            </tr>
+            <tr valign="middle" class="lh-lg">
+              <td>商品合計</td><td><%= @cart_items.items_of_price.round.to_s(:delimited) %></td>
+            </tr>
+            <tr valign="middle" class="lh-lg">
+              <td>ご請求額</td><td><%= @total_payment.round.to_s(:delimited) %></td>
+            </tr>
+        </tbody>
+      </table>
+      
+      <div class="row">
+        <p class="col-3">支払い方法</p>
+        <p class="col-6"><%= @order.payment_method %></p>
+      </div>
+      <div class="row">
+        <p class="col-3">お届け先</p>
+        <p class="col-6">〒<%= @delivery_postcode %><%= @delivery_location %> <%= @delivery_name %></p>
+      </div>
+      
+
+      <div class="hidden_field">
+        <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+        <%= f.hidden_field :customer_id, value: current_customer.id %>
+        <%= f.hidden_field :total_payment, value: @total_payment %>
+        <%= f.hidden_field :shipping_cost, value: 800 %>
+        <% if params[:delivery_address] == "0" %>
+          <%= f.hidden_field :postal_code, value: current_customer.postcode %>
+          <%= f.hidden_field :address, value: current_customer.address %>
+          <%= f.hidden_field :name, value: current_customer.full_name %>
+        <% elsif params[:delivery_address] == "1" %>
+          <%= f.hidden_field :postal_code, value: @registered_address.pluck(:postcode) %>
+          <%= f.hidden_field :address, value: @registered_address.pluck(:address) %>
+          <%= f.hidden_field :name, value: @registered_address.pluck(:name) %>
+        <% elsif params[:delivery_address] == "2" %>
+          <%= f.hidden_field :postal_code, value: @order.postal_code %>
+          <%= f.hidden_field :address, value: @order.address %>
+          <%= f.hidden_field :name, value: @order.name %>
+        <% end %>
+          <%= f.submit '注文を確定する', class: "btn btn-outline-success" %>
+        <% end %>
+      </div>
+      </div>
+      
+      
+      
+      </div>
+      
+    </div>
+  </div>
+  </div>
+</div>

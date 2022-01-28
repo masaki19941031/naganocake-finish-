@@ -1,0 +1,97 @@
+
+<div class='container px-5 px-sm-0 cart-items-index'>
+  <div class='row'>
+  <div class='col-md-7'>
+  
+
+  </div>
+  <div class='col-md-11 offset-md-1'>
+    <div class="mb-3">
+      
+    <div role="content">
+      <div class="widget-body">
+        <div class="row">
+          <form id="wizard-1" novalidate="novalidate">
+            <div id="bootstrap-wizard-1" class="col-sm-12">
+              <div class="form-bootstrapWizard">
+                
+                <div class="clearfix"></div>
+              </div>
+              <div class="tab-content">
+                <div class="tab-pane" id="tab1"> <br>
+                  <h3><strong>買い物かごに入れる</strong> </h3>
+                </div>
+                <div class="tab-pane" id="tab2"> <br>
+                  <h3><strong>注文情報入力</strong> </h3>
+                </div>
+                <div class="tab-pane" id="tab3"> <br>
+                  <h3><strong>注文内容を確認</strong> </h3>
+                </div>
+                <div class="tab-pane" id="tab4"> <br>
+                  <h3><strong>完了</strong> </h3>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+          
+      
+    
+     <span class="fs-3  offset-md-1 bg-light page-title">ショッピングカート</span>
+    </div>
+　<table class='table table-hover table-inverse mx-5'>
+  <thead>
+    <tr bgcolor="#c0c0c0">
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td>
+          <%= cart_item.item.name %>
+        </td>
+        <td><%= cart_item.item.price.round.to_s(:delimited) %></td>
+        <td><%= form_with model: @cart_item, url: cart_item_path(cart_item), method: :patch, local: true do |f| %>
+          <%= f.hidden_field :item_id, value: cart_item.item.id %>
+          <%= f.number_field :amount,value: cart_item.amount %>
+          <%= f.submit "変更", class: 'btn btn-success btn-sm' %>
+          <% end %></td>
+
+        <td><%= cart_item.item.price*cart_item.amount %> </td>
+
+        <td><%= link_to " 削除する",cart_item_path(cart_item), method: :delete, local: true, data: {confirm: "#{cart_item.item.name}を削除してよろしいですか？"}, class: "glyphicon glyphicon-trash btn btn-danger" %></td>
+
+
+
+      </tr>
+    <% end %>
+
+
+  </tbody>
+  </table>
+  <div class="cart_item_money">
+  <tr>
+    <td>合計金額</td><td>¥<%= @total.round.to_s(:delimited)%></td>
+  </tr>
+  </div>
+  
+  <div class="cart_item_button">
+    <tr>
+    <td><%= link_to '買い物を続ける', root_path, class: "btn btn-sm btn-success" %></td>
+    <% if current_customer.cart_items.present? %>
+      <td><%= link_to '情報入力に進む', new_order_path, class: "btn btn-sm btn-success" %></td>
+    <% end %>
+     <%= link_to " カート内全て削除する",destroy_all_cart_items_path, method: :delete, local: true, data: {confirm: "全て削除してよろしいですか？"}, class: "btn btn-sm btn-danger" %>
+    </tr>
+  </div>
+  
+
+  </div>
+</div>

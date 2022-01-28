@@ -1,0 +1,58 @@
+<header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+          
+      <%= link_to image_tag("logo.png", size: "150x50"), root_path, class: "image mt-2" %>
+        <div class="navbar mt-4 nav-left" id="navbarToggleExternalContent">
+            <% if customer_signed_in? %>
+              <p class="pt-3 text-light">ようこそ、<%= current_customer.full_name %>さん！</p>
+            <%end%>
+
+          <% if customer_signed_in? %>
+            <%= link_to 'マイページ', customer_path, class: "btn btn-outline-light nav-menu-text btn-sm" %>
+            <%= link_to '商品一覧 ',items_path, class: "btn btn-outline-light nav-menu-text ms-4 btn-sm" %>
+            <%= link_to 'カート', cart_items_path, class: "btn btn-outline-light ms-4 btn-sm" %>
+            <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-outline-light nav-menu-text ms-4 me-4 btn-sm" %>
+            <%= form_with url: search_path, method: :get, class: "search-form", local: true do |f| %>
+              <%= f.text_field :content, size: "18" %>
+              <button type="submit" name="commit" value="検索" id="search-btn">
+                <i class="fas fa-search"></i>
+              </button>
+            <% end %>
+          <% elsif admin_signed_in? %>
+            <%= link_to ' 商品一覧', admins_items_path, class: "btn btn-outline-light nav-menu-text btn-sm" %>
+            <%= link_to ' 会員一覧 ', admins_customers_path, class: "btn btn-outline-light nav-menu-text ms-4 btn-sm " %>
+            <%= link_to ' 注文履歴一覧 ', admins_orders_path, class: "btn btn-outline-light nav-menu-text ms-4 btn-sm " %>
+            <%= link_to ' ジャンル一覧 ', admins_genres_path, class: "btn btn-outline-light ms-4 btn-sm" %>
+            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-outline-light nav-menu-text ms-4 me-4 btn-sm" %>
+            <%= form_with url: search_path, method: :get, local: true do |f| %>
+              <%= f.text_field :content, size: "17"  %>
+              <button type="submit" name="commit" value="検索" id="search-btn">
+                <i class="fas fa-search"></i>
+              </button>
+            <% end %>
+          <% else %>
+            <%= link_to '　 About　 ',about_path,class: "btn btn-outline-light btn-sm" %>
+            <%= link_to '商品一覧',items_path,class: "btn btn-outline-light ms-4 btn-sm" %>
+            <%= link_to '新規登録', new_customer_registration_path,class: "btn btn-outline-light ms-4 btn-sm" %>
+            <%= link_to 'ログイン', new_customer_session_path,class: "btn btn-outline-light ms-4 btn-sm" %>
+            <%= form_with url: search_path, method: :get, class: "search-form", local: true do |f| %>
+              <%= f.text_field :content %>
+              <button type="submit" name="commit" id="search-btn" value="検索">
+                <i class="fas fa-search"></i>
+              </button>
+
+            <% end %>
+          <% end %>
+        </div>
+        <nav class="navbar navbar-dark bg-dark header-nav mt-0" media="screen and (max-width: 480px)">
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+          </div>
+        </nav>
+    </div>
+  </nav>
+</header>

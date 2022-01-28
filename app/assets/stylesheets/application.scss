@@ -1,0 +1,545 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+*{
+  font-family: 'Klee One', cursive;
+}
+
+main{
+  position: relative;
+  
+}
+
+header{
+  height: 100px;
+	background-image: image-url("header.jpg");
+	background-size: cover;
+	background-position: center;
+}
+
+.header-nav {
+  display: none;
+}
+
+@media screen and (max-width: 765px) {
+  .header-nav {
+    display: inline-block;
+  }
+
+  .nav-left {
+    display: none;
+  }
+}
+
+footer{
+  height: 100px;
+	background-image: image-url("footer.jpg");
+	background-size: cover;
+	background-position: bottom;
+ position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+
+}
+
+li {
+  list-style: none;
+}
+
+.footer-bottom{
+  font-size: 13px;
+}
+
+
+.item_new{
+  display:flex;
+}
+
+
+
+.item_photo{
+  background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
+  background-position: center; /* 背景画像を中央に配置 */
+  margin:10px;
+  height:300px;
+}
+
+.item_name{
+  text-align: center;
+}
+
+
+
+ul li {
+        display: flex;
+        align-items: center;
+    }
+
+ ul li .item_photo,
+    ul li .item_text {
+        width: 50%;
+        box-sizing: border-box;
+    }
+
+
+
+.item_icon img{
+  border: solid 10px #f0f0f0;
+}
+
+.item_photo img{
+  border: solid 10px #f0f0f0;
+}
+
+.item_image img{
+  border: solid 10px #f0f0f0;
+}
+
+.cp_hr01 {
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: #000000;
+}
+
+.item_index_thema{
+  margin-top:20px;
+}
+
+.item_detail_text{
+ margin-top:20px;
+}
+
+.main-visual {
+  width: 100%; /* 横幅いっぱい */
+  height: 300px; /* 高さ300px */
+  background-image: url(img/itigoho-ru.jpg);
+  background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
+  background-position: center; /* 背景画像を中央に配置 */
+}
+
+
+
+.item_visual{
+  background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
+  background-position: center; /* 背景画像を中央に配置 */
+  height:300px;
+  margin:10px;
+}
+
+
+
+
+.item_amount{
+  margin:10px;
+}
+
+
+
+.sample-image {
+  height: 400px;
+  width :100%;
+}
+
+.top-bg {
+  background-image: image-url("top.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+.about-visual {
+  background-image: image-url("monburan.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 750px;
+
+}
+
+.mypage_photo{
+ width: 100%;
+  height: 500px;
+  background-image: image-url("tizu.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/*ログインボタン */
+.btn-login {
+ display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+
+.btn-login:active {
+   -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+
+/* ログインフォーム */
+
+.login-form {
+  position: relative;
+  padding: 0.25em 1em;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
+.login-form:before, .login-form:after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  width: 2px;
+  height: -webkit-calc(100% + 14px);
+  height: calc(100% + 14px);
+  background-color: black;
+}
+
+.login-form:before {
+  left: 7px;
+}
+
+.login-form:after {
+  right: 7px;
+}
+
+/* */
+
+.signup-link {
+  position: relative;
+  padding-left: 1.2em;
+  line-height: 1.4;
+  text-decoration: none;
+  color: black;
+  font-size: 1.1rem;
+
+}
+
+.signup-link:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f00c";
+  font-weight: 900;
+  position: absolute;
+  font-size: 1.4rem;
+  left: 0;
+  top: 0;
+  color: #ab0f50;
+
+}
+
+/*サインアップ用ボタン */
+
+.btn-signup {
+ display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+
+.btn-signup:active {
+   -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+
+/*サインインへのリンク */
+
+.signin-link {
+  position: relative;
+  padding-left: 1.2em;
+  line-height: 1.4;
+  text-decoration: none;
+  color: black;
+  font-size: 1.1rem;
+
+}
+
+.signin-link:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f00c";
+  font-weight: 900;
+  position: absolute;
+  font-size: 1.4rem;
+  left: 0;
+  top: 0;
+  color: #ab0f50;
+}
+
+
+/* */
+
+.signup-form {
+  position: relative;
+  padding: 0.25em 1em;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
+.signup-form:before, .signup-form:after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  width: 2px;
+  height: -webkit-calc(100% + 14px);
+  height: calc(100% + 14px);
+  background-color: black;
+}
+
+.signup-form:before {
+  left: 7px;
+}
+
+.signup-form:after {
+  right: 7px;
+}
+
+/*検索ボタン*/
+
+#search-btn {
+ color: #de3400;  /* 虫眼鏡の色*/
+ background-color: #fff;
+}
+
+#search-btn i{
+  width: 1.5rem;
+}
+
+.search-form {
+  margin-left: 15px;
+}
+
+/*各ページのページタイトルを交差線で囲む */
+.page-title {
+  position: relative;
+  padding: 0.25em 1em;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
+.page-title:before, .page-title:after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  width: 2px;
+  height: -webkit-calc(100% + 14px);
+  height: calc(100% + 14px);
+  background-color: black;
+}
+
+.page-title:before {
+  left: 7px;
+}
+
+.page-title:after {
+  right: 7px;
+}
+
+/*cart-items-index */
+
+.cart-items-index {
+  margin-top: 50px;
+  margin-bottom: 300px;
+}
+
+
+.cart_item_button{
+  text-align: right;
+}
+
+.cart_item_money{
+  text-align: right;
+  margin-bottom:30px;
+}
+
+/*Start Wizard*/
+
+.widget-body{
+  margin-bottom:50px;
+}
+
+.content_complete{
+  padding-top:20px;
+}
+
+.bootstrapWizard {
+    display: block;
+    list-style: none;
+    padding: 0;
+    position: relative;
+    width: 100%
+}
+
+.bootstrapWizard a:hover,.bootstrapWizard a:active,.bootstrapWizard a:focus {
+    text-decoration: none
+}
+
+.bootstrapWizard li {
+    display: block;
+    float: left;
+    width: 25%;
+    text-align: center;
+    padding-left: 0
+}
+
+.bootstrapWizard li:before {
+    border-top: 3px solid #55606E;
+    content: "";
+    display: block;
+    font-size: 0;
+    overflow: hidden;
+    position: relative;
+    top: 11px;
+    right: 1px;
+    width: 100%;
+    z-index: 1
+}
+
+.bootstrapWizard li:first-child:before {
+    left: 50%;
+    max-width: 50%
+}
+
+.bootstrapWizard li:last-child:before {
+    max-width: 50%;
+    width: 50%
+}
+
+.bootstrapWizard li.complete .step {
+    background: #0aa66e;
+    padding: 1px 6px;
+    border: 3px solid #55606E
+}
+
+.bootstrapWizard li .step i {
+    font-size: 10px;
+    font-weight: 400;
+    position: relative;
+    top: -1.5px
+}
+
+.bootstrapWizard li .step {
+    background: #B2B5B9;
+    color: #fff;
+    display: inline;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 12px;
+    padding: 7px 13px;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    line-height: normal;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    transition: all .1s linear 0s
+}
+
+.bootstrapWizard li.active .step,.bootstrapWizard li.active.complete .step {
+    background: #0091d9;
+    color: #fff;
+    font-weight: 700;
+    padding: 7px 13px;
+    font-size: 15px;
+    border-radius: 50%;
+    border: 3px solid #55606E
+}
+
+.bootstrapWizard li.complete .title,.bootstrapWizard li.active .title {
+    color: #2B3D53
+}
+
+.bootstrapWizard li .title {
+    color: #bfbfbf;
+    display: block;
+    font-size: 13px;
+    line-height: 15px;
+    max-width: 100%;
+    position: relative;
+    table-layout: fixed;
+    text-align: center;
+    top: 20px;
+    word-wrap: break-word;
+    z-index: 104
+}
+
+.wizard-actions {
+    display: block;
+    list-style: none;
+    padding: 0;
+    position: relative;
+    width: 100%
+}
+
+.wizard-actions li {
+    display: inline;
+}
+
+.tab-content.transparent {
+    background-color: transparent;
+}
+
+/*End Wizard*/
+.confirm_table{
+  display:inline-block;
+}
+
+.confirm_fee{
+  display:inline-block;
+}
+
+/*フラッシュ */
+.flash {
+  color: #b6195d;
+}
+
+
+
+.item-show {
+  margin-top: 75px;
+}
+
+.admin-session {
+  margin-bottom: 300px;
+}
+
+.order-index {
+  margin-bottom: 400px;
+}
+
+.order-show, .item-index {
+  margin-bottom: 200px;
+}
+
+.customer-index {
+  margin-bottom: 325px;
+}

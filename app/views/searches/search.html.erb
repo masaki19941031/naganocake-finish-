@@ -1,0 +1,111 @@
+<% if @model == "item" %>
+<div class="text-center item-show">
+    <h2>商品"<%= @content %>"(全<%= @records.count %>件)</h2>
+</div>
+<div class="container">
+  
+  <div class="row justify-content-center mt-4">
+    <div class="col-10 row justify-content-between">
+    
+      <div class="fs-2 col-2"></div>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center mt-3">
+    <div class="col-10">
+    <% @records.each do |item| %>
+        <ul>
+        <hr class="cp_hr01" />
+        <li class="item_icon">
+          <%= link_to item_path(item) do %>
+          <%= attachment_image_tag item, :image,class:'item_visual' %>
+          <% end %>
+          <div class="item_text">
+          <p class="item_name">商品名：<%= item.name %></p>
+          <p class="item_name">金額：¥<%= item.price %>(税込)<br>
+          <%= link_to "商品詳細" ,item_path(item),class:'btn btn-signup  mt-4' %></p>
+          </div>
+          
+        </li>
+        </ul>
+        
+    <% end %>
+    </div>
+  </div>
+</div>
+
+<% elsif @model == "genre" %>
+<div class="text-center item-show">
+    <h2>ジャンル"<%= @content %>"(全<%= @records_genre.count %>件)</h2>
+</div>
+<div class="container">
+  
+  <div class="row justify-content-center mt-4">
+    <div class="col-10 row justify-content-between">
+    
+      <div class="fs-2 col-2"></div>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center mt-3">
+    <div class="col-10">
+      <% @records_genre.each do |item| %>
+        <ul>
+        <hr class="cp_hr01" />
+        <li class="item_icon">
+          <%= link_to item_path(item) do %>
+          <%= attachment_image_tag item, :image,class:'item_visual' %>
+          <% end %>
+          <div class="item_text">
+          <p class="item_name">商品名：<%= item.name %></p>
+          <p class="item_name">金額：¥<%= item.price %>(税込)<br>
+          <%= link_to "商品詳細" ,item_path(item),class:'btn btn-signup  mt-4' %></p>
+          </div>
+          
+        </li>
+        </ul>
+        
+      <% end %>
+     
+    </div>
+  </div>
+</div>
+
+
+<% elsif @model == "customer"  %>
+  <div class="container item-show">
+  <div class="row mt-4">
+    <div class="row col-8">
+      <p class="col-2"></p>
+      <p class="col-4 fs-5 bg-light text-center">顧客"<%= @content %>"(全<%= @records.count %>件)</p>
+    </div>
+      
+    <div class="row col-8 mx-auto">
+      <table class='table table-hover table-inverse '>
+        <thead class="bg-light">
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @records.each do |customer| %>
+            <tr valign="middle" class="lh-lg">
+              <td><%= customer.id %></td>
+              <td><%= link_to customer.last_name + "" + customer.first_name,admins_customer_path(customer.id),:style => "color: black;text-decoration: underline" %></td>
+              <td><%= customer.email %></td>
+              <% if customer.is_deleted == true%>
+              <td class="fw-light" style="color: gray">退会</td>
+              <% else %>
+              <td class="fw-bold" style="color:green">有効</td>
+              <% end %>
+            </tr>
+          <% end %>  
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+<% end %>

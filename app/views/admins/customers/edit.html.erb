@@ -1,0 +1,40 @@
+<h1 class="text-white">会員情報編集</h1>
+
+
+  <thead>
+<div>
+    <%= form_with model:@customer, local:true do |f| %>
+   <table>
+     <tr>
+      <td><label class="form-label">氏名</label></td>
+      <td><%= f.text_field :last_name, autofocus: true %></td>
+      <td> <%= f.text_field :first_name, autofocus: true %></td>
+    </tr>
+    <tr>
+      <td><label class="form-label">フリガナ</label> </td>
+      <td><%= f.text_field :last_name_kana, autofocus: true %> </td>
+      <td><%= f.text_field :first_name_kana, autofocus: true  %> </td>
+    </tr>
+    <tr>
+      <td><label class="form-label">郵便番号</label></td>
+      <td><%= f.text_field :postal_code, autofocus: true %></td>
+    </tr>
+    <tr>
+      <td><label class="form-label">住所</label></td>
+      <td><%= f.text_field :address , autofocus: true %></td>
+    </tr>
+    <tr>
+      <td><label class="form-label">電話番号</label></td>
+      <td><%= f.text_field :phone_number , autofocus: true %></td>
+    </tr>
+    <tr>
+      <td><label class="form-label">メールアドレス</label></td>
+      <td><%= f.text_field :email , autofocus: true %></td>
+　　</tr>
+　   <td><%= f.submit "変更内容を保存" %>
+     <%= link_to "退会", unsubscribe_customers_path %>
+  </td>
+<% end %>
+</div>
+  </thead>
+</table>

@@ -1,0 +1,30 @@
+<div class='top-bg px-5 px-sm-0'>
+<div class='container px-5 px-sm-0 item-show'>
+  <div class='row'>
+      <div class='col-md-7'>
+    
+      </div>
+      <div class='col-md-11 offset-md-1'>
+        <div class="item_new">
+            <div class="item_photo">
+              <%= attachment_image_tag @item, :image,class:'item_visual' %>
+            </div>
+            <div class="item_text item_detail_text">
+              <h2><%= @item.name %></h2>
+              <p><%= @item.introduction %></p>
+              <p><h2>¥<%= @item.price.round.to_s(:delimited) %></h2>(税込)</p>
+               <div class='row'>
+                <div class="item_amount">
+                 <%= form_with model: @cart_item, local:true do |f| %>
+                   <%= f.hidden_field :item_id, value: @item.id %>
+                   <%= f.select :amount,[1,2,3,4,5,6,7,8,9,10], required: true %>
+                   <%= f.submit 'カートに入れる' , class: 'btn btn-success btn-sm'%>
+                 <% end %>
+                </div>
+               </div>
+            </div>
+        </div>
+      </div>
+   </div>
+</div>
+</div>

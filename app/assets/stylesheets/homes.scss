@@ -1,0 +1,105 @@
+
+
+/*トップページのメッセージ部分 */
+.welcome-messge {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  padding: 0 30px;
+  font-size: 18px;
+  background: #3f2c3f;
+  color: #FFF;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  font-family: 'Philosopher', sans-serif;
+}
+
+.welcome-messge:before, .welcome-messge:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.welcome-messge:after {
+  top: 0;
+  right: 0;
+  border-width: 25px 15px 25px 0px;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+}
+
+.welcome-messge:before {
+　top: 0;
+  left: 0;
+  border-width: 25px 0px 25px 15px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+}
+
+.welcome-message-content {
+  text-align: center;
+
+  font-size: 1.1rem;
+}
+
+
+/*  */
+.new-item {
+  font-size: 20px;
+  position: relative;
+  font-size: 1.5rem;
+  font-family: 'Philosopher', sans-serif;
+}
+
+.new-item:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: -webkit-repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 4px);
+  background: repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 4px);
+}
+
+.items {
+  font-family: 'Philosopher', sans-serif;
+  transition: all 0.8s;
+}
+
+.items:hover {
+  font-size: 30px;
+}
+
+.item-link {
+  margin-bottom: 70px;
+}
+
+.item-link a {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.7rem;
+  text-decoration: none;
+  color: black;
+  background: linear-gradient(transparent 70%, #ff006f 70%);
+}
+
+.about-text {
+  color: #fff;
+  margin-top: 20px;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+.plugin {
+  background-color: #000000;
+  min-height: 60vh;
+  margin-top: 50px;
+}
+
+
+
+
